@@ -1,0 +1,98 @@
+# Travis config file to build spk package
+# Adapted from https://github.com/torrentalle/spksrc/tree/gogs-build
+# And https://github.com/jelmerj/spksrc
+
+env:
+  global:
+    - PKG=mono
+  matrix:
+# 6.1 and 6.2 toolchains
+# ARM5 arches
+    - SYNOARCH=arch-88f6281-6.1
+# ARM7 arches
+    - SYNOARCH=arch-alpine-6.1
+    - SYNOARCH=arch-armada370-6.1
+    - SYNOARCH=arch-armada375-6.1
+    - SYNOARCH=arch-armada38x-6.1
+    - SYNOARCH=arch-armadaxp-6.1
+    - SYNOARCH=arch-comcerto2k-6.1
+    - SYNOARCH=arch-hi3535-6.1
+#    - SYNOARCH=arch-ipq806x-1.1
+    - SYNOARCH=arch-monaco-6.1
+#    - SYNOARCH=syno-northstarplus-1.1
+# ARM8 arches (binary compatible, just build aarch64)
+#   - SYNOARCH=arch-rtd1296-6.1
+#   - SYNOARCH=arch-armada37xx-6.1
+    - SYNOARCH=arch-aarch64-6.1
+# PPC arches
+    - SYNOARCH=arch-qoriq-6.1
+# x86 arches
+    - SYNOARCH=arch-evansport-6.1
+# x64 arches (binary compatible, just build x64)
+#   - SYNOARCH=arch-apollolake-6.1
+#   - SYNOARCH=arch-avoton-6.1
+#   - SYNOARCH=arch-braswell-6.1
+#   - SYNOARCH=arch-broadwell-6.1
+#   - SYNOARCH=arch-broadwellnk-6.2
+#   - SYNOARCH=arch-bromolow-6.1
+#   - SYNOARCH=arch-cedarview-6.1
+#   - SYNOARCH=arch-denverton-6.1
+#   - SYNOARCH=arch-dockerx64-6.1
+#   - SYNOARCH=arch-grantley-6.1
+#   - SYNOARCH=arch-kvmx64-6.1
+    - SYNOARCH=arch-x64-6.1
+#   - SYNOARCH=arch-x86-6.1
+#   - SYNOARCH=arch-x86_64-6.1
+#
+# 5.2 toolchains
+#
+#    - SYNOARCH=arch-88f6281-5.2
+#    - SYNOARCH=arch-alpine-5.2
+#    - SYNOARCH=arch-armada370-5.2
+#    - SYNOARCH=arch-armada375-5.2
+#    - SYNOARCH=arch-armada38x-5.2
+#    - SYNOARCH=arch-armadaxp-5.2
+#    - SYNOARCH=arch-avoton-5.2
+#    - SYNOARCH=arch-braswell-5.2
+#    - SYNOARCH=arch-bromolow-5.2
+#    - SYNOARCH=arch-cedarview-5.2
+#    - SYNOARCH=arch-comcerto2k-5.2
+#    - SYNOARCH=arch-evansport-5.2
+#    - SYNOARCH=arch-monaco-5.2
+#    - SYNOARCH=arch-ppc853x-5.2
+#    - SYNOARCH=arch-qoriq-5.2
+#    - SYNOARCH=arch-x64-5.2
+#    - SYNOARCH=arch-x86-5.2
+
+# Output is too verbose for TravisCI, so we hide it
+# Remove the ">/dev/null" part to debug!
+# make arch-$SYNOARCH always return exit code 0.
+# The "ls" line is to test if SPK has been build.
+script:
+  - docker pull synocommunity/spksrc;
+  - docker run -it -v `pwd`:/spksrc synocommunity/spksrc /bin/bash -c "cd /spksrc && make setup && cd spk/$PKG && make $SYNOARCH>/dev/null";
+  - ls packages/*.spk;
+
+services:
+  - docker
+
+cache:
+    directories:
+     - distrib
+
+notifications:
+  email: false
+
+git:
+  depth: 1
+
+deploy:
+  provider: releases
+  api_key:
+    secure: ViqjFt+w38UwbZxMfanxJIjcukMQnxG5Vcjx7oHHvN5gk5WPEusqaV2qFTZZNvYt5Gj9b9eOD9lwgnk+oc+ELSspw8BXwIgnOnQmegNyYVTnsTeyA5Tj2+tq1uNY/ScQAGaG6dlYkFohUR65n1BgJcDs/zANppPRRjer/QnLLt4j7/x+PRRxZetNZzY7AVnbuRkII/NuhUC+72qSnsfRMJ0DGOQeFZhjHybNEl9xTdRv3xfHLgKeAsWwZsnthhE26t/Cc+Slxt8JzQpz/SkLPFiTqHRarQyoV3bKj4Y6imYBxZL3g4t3cScbEt4jE3VG8fmR4qlYLK0ndeLG/eIOB7vH9aormTu5DWUHgKl7IUPlzsC/t05vt+p5N5uXkUQkDbFADNfjuF8na1n5M7mOIEqhy5IIXWGm1guDSQMj9Tu8wGYZZ/D2c+4eplkLjEEu8OSMjreZG7G88uVJVYrFAXWqWuaO5nuD5oOyap/bIHkqcbyHl29ooPnKk989KFk6olaLH56b/i4TQYP4PLN64BW/HiBpbiBNDS+I4S5XWGZpwRV3nPyoMf5Oy8r06Cu+pAkf7zDaAQvxSFRSw5cGf8h4yDar8Y4HbICQTXa/HOhjiyUwivzuFyLoxnoUQffsWqm19HtghopfCsnTACcNXXJq8cwDwgRqw89jwEFmbl4=
+  file_glob: true
+  file: packages/*.spk
+  skip_cleanup: true
+  overwrite: true
+  on:
+    tags: true
