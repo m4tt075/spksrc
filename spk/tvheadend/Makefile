@@ -1,6 +1,6 @@
 SPK_NAME = tvheadend
-SPK_VERS = 4.2.8
-SPK_REV = 16
+SPK_VERS = 4.3.1789
+SPK_REV = 17
 SPK_ICON = src/tvheadend.png
 DSM_UI_DIR = app
 
@@ -11,7 +11,7 @@ DESCRIPTION = Tvheadend is a TV streaming server and recorder for Linux, FreeBSD
 RELOAD_UI = yes
 DISPLAY_NAME = Tvheadend
 STARTABLE = yes
-CHANGELOG = "1. Fix CA module support regression<br/>2. Fix regression of upgrading legacy packages<br/>3. Simplify and fix initial login credential setting"
+CHANGELOG = "Update to Tvheadend 4.3.1789"
 HOMEPAGE = https://www.lonelycoder.com/tvheadend/
 LICENSE = GPL v3
 

@@ -1,10 +1,12 @@
 PKG_NAME = tvheadend
-PKG_VERS = 4.2.8
+PKG_VERS = 4.3.1789
 PKG_EXT = tar.gz
-PKG_DIST_NAME = v$(PKG_VERS).$(PKG_EXT)
-PKG_DIST_SITE = https://github.com/tvheadend/tvheadend/archive
-PKG_DIR = $(PKG_NAME)-$(PKG_VERS)
-PKG_DIST_FILE = $(PKG_NAME)-$(PKG_VERS).$(PKG_EXT)
+PKG_DOWNLOAD_METHOD = git
+PKG_GIT_HASH = 6bfeca6c03
+PKG_DIST_NAME = tvheadend.git
+PKG_DIST_SITE = https://github.com/tvheadend
+PKG_DIST_FILE = $(PKG_NAME)-git$(PKG_GIT_HASH).$(PKG_EXT)
+PKG_DIR = $(PKG_NAME)-git*
 
 DEPENDS = cross/openssl cross/libhdhomerun cross/uriparser cross/libdvbcsa cross/pcre2
 
