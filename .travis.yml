@@ -4,7 +4,7 @@
 
 env:
   global:
-    - PKG=mono
+    - PKG=tvheadend
   matrix:
 # 6.1 and 6.2 toolchains
 # ARM5 arches
