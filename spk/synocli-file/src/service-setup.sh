@@ -1,5 +1,5 @@
 
-COMMANDS="jdupes less lessecho lesskey"
+COMMANDS="jdupes less lessecho lesskey tree"
 
 service_postinst ()
 {
