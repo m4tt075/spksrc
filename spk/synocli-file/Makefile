@@ -5,10 +5,10 @@ SPK_VERS = 1.0
 SPK_REV = 1
 SPK_ICON = src/synocli-file.png
 
-DEPENDS = cross/jdupes cross/less cross/tree
+DEPENDS = cross/jdupes cross/less cross/tree cross/rhash
 
 MAINTAINER = m4tt075
-DESCRIPTION = "SynoCli File Tools provides a set of small command-line utilities: jdupes, less, tree. Credits to Sebastian Schmidt \(publicarray\) for icons"
+DESCRIPTION = "SynoCli File Tools provides a set of small command-line utilities: jdupes, less, tree, rhash. Credits to Sebastian Schmidt \(publicarray\) for icons"
 DISPLAY_NAME = SynoCli File Tools
 STARTABLE = no
 CHANGELOG = "1. Initial release"

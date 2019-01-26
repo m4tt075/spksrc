@@ -1,5 +1,6 @@
 
-COMMANDS="jdupes less lessecho lesskey tree"
+COMMANDS="jdupes less lessecho lesskey tree ed2k-link edonr256-hash edonr512-hash ghost-hash has160-hash magnet-link"
+COMMANDS+="rhash sfv-hash tiger-hash tth-hash whirlpool-hash"
 
 service_postinst ()
 {
