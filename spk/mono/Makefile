@@ -34,7 +34,7 @@ mono_extra_install:
 
 .PHONY: mono_pre_copy
 mono_pre_copy: $(INSTALL_PLIST)
-	# remove boehm GC references from PLIST if it isn't available on the platform (e.g. rtd1296)
-	test -f $(INSTALL_DIR)$(INSTALL_PREFIX)/bin/mono-boehm || sed -i -e '/:bin\/mono-boehm/d' -e '/:lib\/libmonoboehm/d' $(INSTALL_PLIST)
-        # remove btls library from PLIST if it isn't available on the platform (e.g. 88f6281)
-	test -f $(INSTALL_DIR)$(INSTALL_PREFIX)/lib/libmono-btls-shared.so || sed -i -e '/:lib\/libmono-btls-shared.so/d' $(INSTALL_PLIST)
+#	# remove boehm GC references from PLIST if it isn't available on the platform (e.g. rtd1296)
+#	test -f $(INSTALL_DIR)$(INSTALL_PREFIX)/bin/mono-boehm || sed -i -e '/:bin\/mono-boehm/d' -e '/:lib\/libmonoboehm/d' $(INSTALL_PLIST)
+#        # remove btls library from PLIST if it isn't available on the platform (e.g. 88f6281)
+#	test -f $(INSTALL_DIR)$(INSTALL_PREFIX)/lib/libmono-btls-shared.so || sed -i -e '/:lib\/libmono-btls-shared.so/d' $(INSTALL_PLIST)
