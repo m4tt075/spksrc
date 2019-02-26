@@ -17,7 +17,7 @@ LICENSE  = http://www.mono-project.com/docs/faq/licensing
 SERVICE_SETUP = src/service-setup.sh
 
 POST_STRIP_TARGET = mono_extra_install
-PRE_COPY_TARGET = mono_pre_copy
+# PRE_COPY_TARGET = mono_pre_copy
 
 MONO_NATIVE_INSTALL = $(WORK_DIR)/../../../native/$(SPK_NAME)/work-native/install
 
@@ -32,8 +32,8 @@ mono_extra_install:
 	install -m 755 -d $(STAGING_DIR)/bin
 	cp -nR $(MONO_NATIVE_INSTALL)/usr/local/bin $(STAGING_DIR)/
 
-.PHONY: mono_pre_copy
-mono_pre_copy: $(INSTALL_PLIST)
+# .PHONY: mono_pre_copy
+# mono_pre_copy: $(INSTALL_PLIST)
 #	# remove boehm GC references from PLIST if it isn't available on the platform (e.g. rtd1296)
 #	test -f $(INSTALL_DIR)$(INSTALL_PREFIX)/bin/mono-boehm || sed -i -e '/:bin\/mono-boehm/d' -e '/:lib\/libmonoboehm/d' $(INSTALL_PLIST)
 #        # remove btls library from PLIST if it isn't available on the platform (e.g. 88f6281)
