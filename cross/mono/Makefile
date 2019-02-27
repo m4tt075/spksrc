@@ -31,12 +31,14 @@ include ../../mk/spksrc.cross-cc.mk
 
 ifeq ($(findstring $(ARCH), $(ARM5_ARCHES)),$(ARCH))
 	AG_ARGS = --host=arm-linux
+	PLIST_TRANSFORM = sed -e '/:lib\/libmono-btls-shared.so/d'
 endif
 ifeq ($(findstring $(ARCH), $(ARM7_ARCHES)),$(ARCH))
 	AG_ARGS = --host=arm-linux
 endif
 ifeq ($(findstring $(ARCH), $(ARM8_ARCHES)),$(ARCH))
 	AG_ARGS = --host=aarch64-linux
+	PLIST_TRANSFORM = sed -e '/:bin\/mono-boehm/d'
 endif
 ifeq ($(findstring $(ARCH), $(PPC_ARCHES)),$(ARCH))
 	AG_ARGS = --host=powerpc-linux
