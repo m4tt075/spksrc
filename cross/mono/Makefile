@@ -14,7 +14,7 @@ COMMENT  = Cross platform, open source .NET development framework
 LICENSE  = http://www.mono-project.com/docs/faq/licensing
 
 REQUIRED_DSM = 5.0
-UNSUPPORTED_ARCHS = $(PPC_ARCHES)
+# UNSUPPORTED_ARCHS = $(PPC_ARCHES)
 GNU_CONFIGURE = 1
 PRE_CONFIGURE_TARGET = mono_pre_configure
 
@@ -29,10 +29,19 @@ ADDITIONAL_CFLAGS = -Os
 
 include ../../mk/spksrc.cross-cc.mk
 
-AG_ARGS = --disable-mcs-build
-ifeq ($(findstring $(ARCH), $(ARM_ARCHES)),$(ARCH))
-	AG_ARGS += --host=arm-linux
+ifeq ($(findstring $(ARCH), $(ARM5_ARCHES)),$(ARCH))
+	AG_ARGS = --host=arm-linux
 endif
+ifeq ($(findstring $(ARCH), $(ARM7_ARCHES)),$(ARCH))
+	AG_ARGS = --host=arm-linux
+endif
+ifeq ($(findstring $(ARCH), $(ARM8_ARCHES)),$(ARCH))
+	AG_ARGS = --host=aarch64-linux
+endif
+ifeq ($(findstring $(ARCH), $(PPC_ARCHES)),$(ARCH))
+	AG_ARGS = --host=powerpc-linux
+endif
+AG_ARGS += --disable-mcs-build
 
 .PHONY: mono_pre_configure
 mono_pre_configure:

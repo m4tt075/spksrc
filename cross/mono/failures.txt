@@ -1,0 +1,2 @@
+chmod: cannot access '/spksrc/spk/mono/work-88f6281-6.1/staging/lib/libmono-btls-shared.so': No such file or directory
+chmod: cannot access '/spksrc/spk/mono/work-aarch64-6.1/staging/bin/mono-boehm': No such file or directory
