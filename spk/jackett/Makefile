@@ -1,6 +1,6 @@
 SPK_NAME = jackett
 SPK_VERS = 0.10.589
-SPK_REV = 7
+SPK_REV = 8
 SPK_ICON = src/jackett.png
 DSM_UI_DIR = app
 
@@ -14,7 +14,7 @@ RELOAD_UI = yes
 DISPLAY_NAME = Jackett
 BETA = 1
 STARTABLE = yes
-CHANGELOG = "Update Jackett to version 0.10.589"
+CHANGELOG = "Add qoriq platform support for DSM6.1"
 HOMEPAGE = https://github.com/Jackett/Jackett
 LICENSE = GPLv2
 
@@ -32,8 +32,8 @@ ADMIN_PORT = $(SERVICE_PORT)
 POST_STRIP_TARGET = jackett_extra_install
 
 REQUIRED_DSM = 5.0
-# no PPC support for mono
-UNSUPPORTED_ARCHS = $(PPC_ARCHES)
+# no ppc853x support for mono
+UNSUPPORTED_ARCHS = ppc853x
 
 BUSYBOX_CONFIG = usrmng daemon
 ENV += BUSYBOX_CONFIG="$(BUSYBOX_CONFIG)"
