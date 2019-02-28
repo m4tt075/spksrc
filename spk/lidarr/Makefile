@@ -1,10 +1,10 @@
 SPK_NAME = lidarr
 SPK_VERS = $(shell date +%Y%m%d)
-SPK_REV = 1
+SPK_REV = 2
 SPK_ICON = src/lidarr.png
 
 REQUIRED_DSM = 5.0
-UNSUPPORTED_ARCHS = $(PPC_ARCHES)
+UNSUPPORTED_ARCHS = ppc853x
 
 DEPENDS = cross/curl cross/mediainfo cross/sqlite cross/lidarr
 
@@ -15,7 +15,7 @@ DESCRIPTION  = Lidarr is a music collection manager for Usenet and BitTorrent us
 RELOAD_UI = yes
 STARTABLE = yes
 DISPLAY_NAME = Lidarr
-CHANGELOG = "First release."
+CHANGELOG = "Add qoriq platform support for DSM6.1+ (as mono supports it)"
 
 HOMEPAGE = http://lidarr.audio/
 LICENSE  = GPLv3
