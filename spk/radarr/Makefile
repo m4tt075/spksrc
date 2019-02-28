@@ -1,10 +1,10 @@
 SPK_NAME = radarr
 SPK_VERS = $(shell date +%Y%m%d)
-SPK_REV = 7
+SPK_REV = 8
 SPK_ICON = src/radarr.png
 
 REQUIRED_DSM = 5.0
-UNSUPPORTED_ARCHS = $(PPC_ARCHES)
+UNSUPPORTED_ARCHS = ppc853x
 
 DEPENDS = cross/busybox cross/curl cross/mediainfo cross/sqlite cross/radarr
 
@@ -15,7 +15,7 @@ DESCRIPTION  = Radarr is a movie manager like Couchpotato, but based on the Sona
 RELOAD_UI = yes
 STARTABLE = yes
 DISPLAY_NAME = Radarr
-CHANGELOG = "Integrate with DSM5+6 Generic Service support for correct permissions."
+CHANGELOG = "Add qoriq platform support for DSM6.1+ (as mono supports it)"
 
 HOMEPAGE = https://radarr.video/
 LICENSE  = GPLv3
