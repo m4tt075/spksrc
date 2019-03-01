@@ -1,10 +1,10 @@
 SPK_NAME = nzbdrone
 SPK_VERS = $(shell date +%Y%m%d)
-SPK_REV = 14
+SPK_REV = 15
 SPK_ICON = src/sonarr.png
 
 REQUIRED_DSM = 5.0
-UNSUPPORTED_ARCHS = $(PPC_ARCHES)
+UNSUPPORTED_ARCHS = ppc853x
 
 DEPENDS = cross/busybox cross/curl cross/mediainfo cross/sqlite cross/sonarr
 
@@ -17,7 +17,7 @@ DESCRIPTION_SPN = Sonarr es un PVR para los usuarios de grupos de noticias y tor
 RELOAD_UI = yes
 DISPLAY_NAME = Sonarr
 STARTABLE = yes
-CHANGELOG = "Integrate with DSM5+6 Generic Service support for correct permissions."
+CHANGELOG = "Add qoriq platform support for DSM6.1+ (as mono supports it)"
 
 HOMEPAGE = https://sonarr.tv
 LICENSE  = GPLv3
