@@ -25,7 +25,7 @@ env:
 #   - SYNOARCH=arch-armada37xx-6.1
     - SYNOARCH=arch-aarch64-6.1
 # PPC arches
-    - SYNOARCH=arch-qoriq-6.1
+#    - SYNOARCH=arch-qoriq-6.1
 # x86 arches
     - SYNOARCH=arch-evansport-6.1
 #   - SYNOARCH=arch-x86-6.1
@@ -57,8 +57,8 @@ env:
     - SYNOARCH=arch-comcerto2k-5.2
     - SYNOARCH=arch-monaco-5.2
 # PPC arches
-    - SYNOARCH=arch-ppc853x-5.2
-    - SYNOARCH=arch-qoriq-5.2
+#    - SYNOARCH=arch-ppc853x-5.2
+#    - SYNOARCH=arch-qoriq-5.2
 # x86 arches
     - SYNOARCH=arch-evansport-5.2
 #    - SYNOARCH=arch-x86-5.2
