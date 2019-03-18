@@ -6,7 +6,7 @@ service_prestart ()
 {
     # Replace generic service startup
 
-    MONO_PATH="${SYNOPKG_PKGDEST}/../mono/bin"
+    MONO_PATH="/usr/local/mono/bin"
     PATH="${SYNOPKG_PKGDEST}/bin:${MONO_PATH}:${PATH}"
     MONO="${MONO_PATH}/mono"
     JACKETT="${SYNOPKG_PKGDEST}/share/${SYNOPKG_PKGNAME}/JackettConsole.exe"
