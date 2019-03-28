@@ -43,7 +43,7 @@ ifeq ($(findstring $(ARCH), $(ARM7_ARCHES)),$(ARCH))
 	endif
 endif
 ifeq ($(findstring $(ARCH), $(ARM8_ARCHES)),$(ARCH))
-	AG_ARGS = --host=aarch64-linux
+	AG_ARGS = --host=aarch64-linux --with-csc=mcs
 	PLIST_TRANSFORM = sed -e '/:bin\/mono-boehm/d' -e '/:lib\/libmonoboehm/d'
 endif
 ifeq ($(findstring $(ARCH), $(x86_ARCHES)),$(ARCH))
